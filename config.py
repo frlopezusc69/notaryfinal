@@ -1,12 +1,15 @@
 import os 
-basedir = os.path.abspath(os.path.dirname(__file__))
+# basedir = os.path.abspath(os.path.dirname(__file__))
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(__name__), '.env'))
+
 
 class Config():
     FLASK_APP = os.environ.get('FLASK_APP')
     FLASK_ENV = os.environ.get('FLASK_ENV')
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    if os.getenv('SQLALCHEMY_DATABASE_URI').startswith('postgres'):
-        SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI').replace('postgres', 'postgresql')
+    if os.environ.get('SQLALCHEMY_DATABASE_URI').startswith('postgres'):
+        SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI').replace('postgres', 'postgresql')
     SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
     # MAIL_SERVER = pass #create sendgrid.net
     # MAIL_PORT = pass #create mail port from sendgrid

@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
     
     def __init__(self, username, displayname, password, email):
         self.username = username
-        self.diaplayname = displayname
+        self.displayname = displayname
         self.password = generate_password_hash(password)
         self.email = email
         self.verified = True
