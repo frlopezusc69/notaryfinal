@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.blueprints.users.models import User
+from app.blueprints.Users.models import User
 
 app = create_app()
 

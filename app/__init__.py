@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 
-
+db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 mail = Mail()
@@ -21,12 +21,12 @@ def create_app(config_class=Config):
     CORS(app)
     login.login_view = 'users.login'
     login.login_message = 'Please login to access your course'
-    legin.login_message_category = 'warning'
+    login.login_message_category = 'warning'
     with app.app_context():
-        from app.blueprints.users import bp as users
+        from app.blueprints.Users import bp as users
         app.register_blueprint(users)
         
-        from app.blueprints.api import bp as main
+        from app.blueprints.API import bp as main
         app.register_blueprint(main)
         
     return app
