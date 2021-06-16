@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 
 function Footer() {
     return (
@@ -16,4 +15,7 @@ function Footer() {
             <div class="card-footer text-muted">
                 Powered by FelixTries Inc. 2021
             </div>
-        </div>
+        </div> 
+        
+    
+    )};
