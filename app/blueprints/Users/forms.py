@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, EqualTo, Email, ValidationError
 class UserForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])'
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     email = StringField('Email', validators=[DataRequired(), Email()])
     address = StringField('Shipping Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])

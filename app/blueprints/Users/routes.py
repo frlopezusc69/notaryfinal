@@ -1,5 +1,5 @@
 from . import bp as users
-from app import db, email
+from app import db, mail
 from .email import send_password_reset_email
 from flask import render_template, request, redirect, url_for, flash
 from .forms import UserForm, LoginForm, UserUpdateForm, ResetPasswordForm, ResetPasswordRequestForm
@@ -11,7 +11,7 @@ from flask_mail import Message
 @users.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated():
-        return redirect(url_for(('main.index'))
+        return redirect(url_for(('main.index')))
     form = LoginForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -64,7 +64,7 @@ def register():
             (User.username == username) | (User.email == email)).all()
         if existing_user:
             flash('Looks like this account already exists. Please try another username and password and try again.', 'danger')
-        return redirect(url_for('users.register'))
+            return redirect(url_for('users.register'))
         new_user = User(username, password, email, address, city, state, zip)
         db.session.add(new_user)
         db.session.commit()
